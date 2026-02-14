@@ -1,5 +1,6 @@
-package com.tdd.register;
+package com.tdd.register.repository;
 
+import com.tdd.register.domain.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
