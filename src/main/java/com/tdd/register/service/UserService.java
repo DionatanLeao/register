@@ -1,5 +1,7 @@
-package com.tdd.register;
+package com.tdd.register.service;
 
+import com.tdd.register.domain.User;
+import com.tdd.register.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
