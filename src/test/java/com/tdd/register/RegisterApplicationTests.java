@@ -21,7 +21,7 @@ class RegisterApplicationTests {
 		User userBeforeSave = new User("Danilo", "1234", LocalDate.of(1992, 10, 6));
 		User userAfterSave = userBeforeSave;
 		userAfterSave.setId("1");
-		Mockito.when(userRepository.save(user)).thenReturn(userAfterSave);
+		Mockito.when(userRepository.save(userBeforeSave)).thenReturn(userAfterSave);
 
 		var user = userService.register(userBeforeSave);
 
