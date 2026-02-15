@@ -40,7 +40,17 @@ class UserServiceTest {
         Mockito.verifyNoInteractions(userRepository);
         Mockito.verify(userRepository, Mockito.never()).save(user);
         Assertions.assertEquals("Age not allowed", exception.getMessage());
+    }
 
+    @Test
+    public void should_return_error_when_age_is_greater_than_sixty() {
+        User user = new User(null, "Danilo", "1234", LocalDate.of(1960, 4, 10));
+
+        var exception = Assertions.assertThrows(RuntimeException.class, () -> userService.register(user));
+
+        Mockito.verifyNoInteractions(userRepository);
+        Mockito.verify(userRepository, Mockito.never()).save(user);
+        Assertions.assertEquals("Age not allowed", exception.getMessage());
     }
 
 }
