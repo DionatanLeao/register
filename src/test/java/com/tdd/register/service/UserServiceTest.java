@@ -4,6 +4,8 @@ import com.tdd.register.domain.User;
 import com.tdd.register.repository.UserRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -45,6 +47,18 @@ class UserServiceTest {
     @Test
     public void should_return_error_when_age_is_greater_than_sixty() {
         User user = new User(null, "Danilo", "1234", LocalDate.of(1960, 4, 10));
+
+        var exception = Assertions.assertThrows(RuntimeException.class, () -> userService.register(user));
+
+        Mockito.verifyNoInteractions(userRepository);
+        Mockito.verify(userRepository, Mockito.never()).save(user);
+        Assertions.assertEquals("Age not allowed", exception.getMessage());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {2010, 1960})
+    public void should_return_error_when_age_is_invalid(Integer year) {
+        User user = new User(null, "Danilo", "1234", LocalDate.of(year, 4, 10));
 
         var exception = Assertions.assertThrows(RuntimeException.class, () -> userService.register(user));
 
