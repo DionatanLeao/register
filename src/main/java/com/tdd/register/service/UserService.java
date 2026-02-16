@@ -16,10 +16,9 @@ public class UserService {
     public User register(User user) {
         var age = Period.between(user.getDateOfBirth(), LocalDate.now()).getYears();
 
-        if(age >= 18) {
-            return userRepository.save(user);
-        } else {
-            throw new RuntimeException("Idade não permitida");
+        if(age < 18) {
+            throw new RuntimeException("Age not allowed");
         }
+        return userRepository.save(user);
     }
 }

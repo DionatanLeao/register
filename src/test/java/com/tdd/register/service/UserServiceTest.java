@@ -39,7 +39,7 @@ class UserServiceTest {
 
         Mockito.verifyNoInteractions(userRepository);
         Mockito.verify(userRepository, Mockito.never()).save(user);
-        Assertions.assertEquals("Idade não permitida", exception.getMessage());
+        Assertions.assertEquals("Age not allowed", exception.getMessage());
 
     }
 
