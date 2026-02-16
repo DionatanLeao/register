@@ -31,4 +31,16 @@ class UserServiceTest {
         Assertions.assertEquals(userAfterSave, user);
     }
 
+    @Test
+    public void should_return_error_when_age_is_less_than_eighteen() {
+        User user = new User(null, "Danilo", "1234", LocalDate.of(2010, 4, 10));
+
+        var exception = Assertions.assertThrows(RuntimeException.class, () -> userService.register(user));
+
+        Mockito.verifyNoInteractions(userRepository);
+        Mockito.verify(userRepository, Mockito.never()).save(user);
+        Assertions.assertEquals("Idade não permitida", exception.getMessage());
+
+    }
+
 }
