@@ -1,4 +1,4 @@
-package com.tdd.register.controller;
+package com.tdd.register.controller.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,6 +19,6 @@ public class UserRequest {
     @NotBlank
     @Size(min = 4, max = 6, message = "The size should be between 4 and 6")
     private String password;
-    @NotNull
+    @NotNull(message = "The date field cannot be null")
     private LocalDate dateOfBirth;
 }

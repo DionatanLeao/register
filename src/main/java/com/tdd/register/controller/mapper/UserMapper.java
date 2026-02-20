@@ -1,5 +1,6 @@
-package com.tdd.register.controller;
+package com.tdd.register.controller.mapper;
 
+import com.tdd.register.controller.request.UserRequest;
 import com.tdd.register.domain.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
