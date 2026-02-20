@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(collation = "users")
+@Document(collection = "users")
 public class User {
     @MongoId
     private String id;

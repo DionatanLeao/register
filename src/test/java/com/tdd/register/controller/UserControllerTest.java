@@ -24,7 +24,7 @@ public class UserControllerTest {
     private ObjectMapper objectMapper;
 
     @Test
-    public void should_return_username_length_error() {
+    public void should_return_username_length_error() throws Exception {
         var request = new UserRequest("Jo", "1234", LocalDate.now());
 
         mockMvc.perform(
