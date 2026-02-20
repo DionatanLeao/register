@@ -1,4 +1,4 @@
-package com.tdd.register.controller;
+package com.tdd.register.controller.handler;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
